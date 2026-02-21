@@ -15,6 +15,7 @@
     .card-row { display:flex; gap:4px; flex-wrap:wrap; margin-bottom:8px; }
     .card-row img { width:50px; }
     .formula { color:#2f4f7f; font-size:0.9rem; margin:0; }
+    .detail { margin:8px 0 0; font-size:0.9rem; line-height:1.45; color:#374a6b; }
   </style>
 </head>
 <body>
@@ -115,6 +116,90 @@
             <img src="Cards/king_of_hearts.svg" alt="K♥" />
           </div>
           <p class="formula">(8+8+4+4) × 2</p>
+        </article>
+      </div>
+    </div>
+
+    <div class="step">
+      <h2>7) 기타 족보 전체 안내 (주요 족보 제외)</h2>
+      <p>아래 족보들도 실제 점수 계산에 전부 사용돼요. 상황에 따라 역전 카드가 될 수 있으니 꼭 기억해 주세요.</p>
+      <div class="combo-grid">
+        <article class="combo-card">
+          <h3>플러시 하우스 (×15)</h3>
+          <div class="card-row">
+            <img src="Cards/7_of_hearts.svg" alt="7♥" />
+            <img src="Cards/7_of_hearts.svg" alt="7♥" />
+            <img src="Cards/7_of_hearts.svg" alt="7♥" />
+            <img src="Cards/king_of_hearts.svg" alt="K♥" />
+            <img src="Cards/king_of_hearts.svg" alt="K♥" />
+          </div>
+          <p class="formula">(7+7+7+10+10) × 15</p>
+          <p class="detail">같은 무늬 5장(플러시)이면서 3장+2장 형태(풀하우스)일 때예요. 게임 내 최고 배수라서 조커 활용 시 가장 강력합니다.</p>
+        </article>
+
+        <article class="combo-card">
+          <h3>파이브카드 (×12)</h3>
+          <div class="card-row">
+            <img src="Cards/9_of_spades.svg" alt="9♠" />
+            <img src="Cards/9_of_hearts.svg" alt="9♥" />
+            <img src="Cards/9_of_diamonds.svg" alt="9♦" />
+            <img src="Cards/9_of_clubs.svg" alt="9♣" />
+            <img src="Cards/black_joker.svg" alt="블랙 조커" />
+          </div>
+          <p class="formula">(9+9+9+9+9) × 12</p>
+          <p class="detail">같은 숫자 5장을 만드는 족보예요. 기본 카드 4장 + 조커 1장으로 완성되는 경우가 가장 흔합니다.</p>
+        </article>
+
+        <article class="combo-card">
+          <h3>플러시 (×4)</h3>
+          <div class="card-row">
+            <img src="Cards/2_of_clubs.svg" alt="2♣" />
+            <img src="Cards/5_of_clubs.svg" alt="5♣" />
+            <img src="Cards/8_of_clubs.svg" alt="8♣" />
+            <img src="Cards/jack_of_clubs.svg" alt="J♣" />
+            <img src="Cards/king_of_clubs.svg" alt="K♣" />
+          </div>
+          <p class="formula">(2+5+8+10+10) × 4</p>
+          <p class="detail">숫자는 연속이 아니어도 되고, 무늬만 모두 같으면 됩니다. 높은 그림 카드가 많을수록 점수가 크게 올라요.</p>
+        </article>
+
+        <article class="combo-card">
+          <h3>트리플 (×3)</h3>
+          <div class="card-row">
+            <img src="Cards/6_of_spades.svg" alt="6♠" />
+            <img src="Cards/6_of_hearts.svg" alt="6♥" />
+            <img src="Cards/6_of_diamonds.svg" alt="6♦" />
+            <img src="Cards/queen_of_clubs.svg" alt="Q♣" />
+            <img src="Cards/2_of_hearts.svg" alt="2♥" />
+          </div>
+          <p class="formula">(6+6+6) × 3</p>
+          <p class="detail">같은 숫자 3장을 만들면 됩니다. 남은 2장은 점수 계산에 포함되지 않고, 트리플 숫자만 반영돼요.</p>
+        </article>
+
+        <article class="combo-card">
+          <h3>페어 (×2)</h3>
+          <div class="card-row">
+            <img src="Cards/ace_of_spades.svg" alt="A♠" />
+            <img src="Cards/ace_of_diamonds.svg" alt="A♦" />
+            <img src="Cards/10_of_hearts.svg" alt="10♥" />
+            <img src="Cards/7_of_clubs.svg" alt="7♣" />
+            <img src="Cards/3_of_hearts.svg" alt="3♥" />
+          </div>
+          <p class="formula">(1+1) × 2</p>
+          <p class="detail">같은 숫자 2장으로 성립합니다. A는 포인트 1점으로 계산되므로, 페어 점수를 높이려면 10점 카드 페어가 유리해요.</p>
+        </article>
+
+        <article class="combo-card">
+          <h3>하이카드 (배수 없음)</h3>
+          <div class="card-row">
+            <img src="Cards/2_of_spades.svg" alt="2♠" />
+            <img src="Cards/5_of_diamonds.svg" alt="5♦" />
+            <img src="Cards/8_of_hearts.svg" alt="8♥" />
+            <img src="Cards/jack_of_spades.svg" alt="J♠" />
+            <img src="Cards/king_of_clubs.svg" alt="K♣" />
+          </div>
+          <p class="formula">가장 높은 카드 1장 점수</p>
+          <p class="detail">어떤 족보도 없을 때 적용돼요. 가장 높은 카드의 포인트(최대 10점)만 최종 점수가 됩니다.</p>
         </article>
       </div>
     </div>
