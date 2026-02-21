@@ -35,7 +35,7 @@ els.resetBtn.addEventListener("click", () => {
 });
 
 function createInitialState() {
-  const hands = PLAYERS.map(() => drawCards(8));
+  const hands = PLAYERS.map(() => drawCardsWithJokerLimit([], 8));
   return {
     phase: "discard",
     scores: [0, 0, 0, 0],
@@ -74,6 +74,22 @@ function drawOne() {
 
 function drawCards(count) {
   return Array.from({ length: count }, drawOne);
+}
+
+function drawCardsWithJokerLimit(existingCards, count, maxJokers = 1) {
+  const drawn = [];
+  const currentJokers = existingCards.filter((card) => card.rank === "joker").length;
+  for (let i = 0; i < count; i++) {
+    let card = drawOne();
+    const jokerCount = currentJokers + drawn.filter((c) => c.rank === "joker").length;
+    if (card.rank === "joker" && jokerCount >= maxJokers) {
+      do {
+        card = drawOne();
+      } while (card.rank === "joker");
+    }
+    drawn.push(card);
+  }
+  return drawn;
 }
 
 function makeCard(rank, suit) {
@@ -309,6 +325,12 @@ function toggleUserSelect(cardId) {
   } else {
     const max = isDiscard ? 2 : 5;
     if (selected.length >= max) return;
+    if (!isDiscard) {
+      const pickedCard = state.hands[3].find((card) => card.id === cardId);
+      const selectedCards = state.hands[3].filter((card) => selected.includes(card.id));
+      const selectedJokers = selectedCards.filter((card) => card.rank === "joker").length;
+      if (pickedCard?.rank === "joker" && selectedJokers >= 1) return;
+    }
     state.selected[3].push(cardId);
   }
   render();
@@ -321,7 +343,7 @@ function userDiscard(skip) {
   if (!skip) {
     const selectedIds = new Set(state.selected[3]);
     const kept = state.hands[3].filter((c) => !selectedIds.has(c.id));
-    state.hands[3] = [...kept, ...drawCards(state.selected[3].length)];
+    state.hands[3] = [...kept, ...drawCardsWithJokerLimit(kept, state.selected[3].length)];
   }
 
   state.selected[3] = [];
@@ -334,12 +356,14 @@ function userConfirmHand() {
   if (state.phase !== "hand") return;
   if (state.selected[3].length !== 5) return;
 
+  const userHand = state.hands[3].filter((c) => state.selected[3].includes(c.id));
+  if (userHand.filter((card) => card.rank === "joker").length > 1) return;
+
   for (let i = 0; i < 3; i++) {
     const { hand, result } = bestHandFromEight(state.hands[i]);
     finishOnePlayer(i, hand, result);
   }
 
-  const userHand = state.hands[3].filter((c) => state.selected[3].includes(c.id));
   const userEval = evaluateBestFive(userHand);
   finishOnePlayer(3, userHand, userEval);
 
@@ -355,6 +379,6 @@ function finishOnePlayer(idx, hand, result) {
   state.lastResult[idx] = result;
   const ids = new Set(hand.map((c) => c.id));
   const remain = state.hands[idx].filter((c) => !ids.has(c.id));
-  state.hands[idx] = [...remain, ...drawCards(5)];
+  state.hands[idx] = [...remain, ...drawCardsWithJokerLimit(remain, 5)];
   state.logs.push(`${PLAYERS[idx]}: ${result.name} ${result.score}점 (${result.formula})`);
 }

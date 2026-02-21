@@ -6,9 +6,15 @@
   <title>도움말 - 솔로 트로</title>
   <link rel="stylesheet" href="styles.css" />
   <style>
-    .guide { max-width: 860px; margin: 20px auto; background:#fff; padding:16px; border-radius:12px; }
+    .guide { max-width: 900px; margin: 20px auto; background:#fff; padding:16px; border-radius:12px; }
     .step { margin-bottom: 16px; }
     .mini { width: 70px; }
+    .combo-grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap:12px; }
+    .combo-card { border:1px solid #d7dcea; border-radius:10px; padding:10px; background:#f9fbff; }
+    .combo-card h3 { margin:0 0 8px; font-size:1rem; }
+    .card-row { display:flex; gap:4px; flex-wrap:wrap; margin-bottom:8px; }
+    .card-row img { width:50px; }
+    .formula { color:#2f4f7f; font-size:0.9rem; margin:0; }
   </style>
 </head>
 <body>
@@ -33,7 +39,7 @@
     <div class="step">
       <h2>3) 핸드카드 5장 고르기</h2>
       <p>8장 중 딱 5장을 골라 점수를 계산해요.</p>
-      <p>좋은 족보(예: 스트레이트, 풀하우스)가 나오면 점수가 많이 올라요.</p>
+      <p>핸드카드에는 조커를 최대 1장까지만 넣을 수 있어요.</p>
     </div>
 
     <div class="step">
@@ -45,6 +51,72 @@
       <h2>5) 조커는 특별해요</h2>
       <p>조커는 원하는 숫자로 바꿔 생각할 수 있어요.</p>
       <p>블랙 조커는 ♠/♣, 레드 조커는 ♥/♦ 모양으로만 바뀔 수 있어요.</p>
+    </div>
+
+    <div class="step">
+      <h2>6) 족보 구성 예시</h2>
+      <p>아래는 주요 족보와 점수 계산 방식이에요.</p>
+      <div class="combo-grid">
+        <article class="combo-card">
+          <h3>스트레이트 플러시 (×10)</h3>
+          <div class="card-row">
+            <img src="Cards/5_of_hearts.svg" alt="5♥" />
+            <img src="Cards/6_of_hearts.svg" alt="6♥" />
+            <img src="Cards/7_of_hearts.svg" alt="7♥" />
+            <img src="Cards/8_of_hearts.svg" alt="8♥" />
+            <img src="Cards/9_of_hearts.svg" alt="9♥" />
+          </div>
+          <p class="formula">(5+6+7+8+9) × 10</p>
+        </article>
+
+        <article class="combo-card">
+          <h3>포카드 (×7)</h3>
+          <div class="card-row">
+            <img src="Cards/9_of_spades.svg" alt="9♠" />
+            <img src="Cards/9_of_hearts.svg" alt="9♥" />
+            <img src="Cards/9_of_diamonds.svg" alt="9♦" />
+            <img src="Cards/9_of_clubs.svg" alt="9♣" />
+            <img src="Cards/2_of_spades.svg" alt="2♠" />
+          </div>
+          <p class="formula">(9+9+9+9) × 7</p>
+        </article>
+
+        <article class="combo-card">
+          <h3>풀하우스 (×5)</h3>
+          <div class="card-row">
+            <img src="Cards/queen_of_spades.svg" alt="Q♠" />
+            <img src="Cards/queen_of_hearts.svg" alt="Q♥" />
+            <img src="Cards/queen_of_diamonds.svg" alt="Q♦" />
+            <img src="Cards/5_of_spades.svg" alt="5♠" />
+            <img src="Cards/5_of_clubs.svg" alt="5♣" />
+          </div>
+          <p class="formula">(10+10+10+5+5) × 5</p>
+        </article>
+
+        <article class="combo-card">
+          <h3>스트레이트 (×3)</h3>
+          <div class="card-row">
+            <img src="Cards/10_of_spades.svg" alt="10♠" />
+            <img src="Cards/jack_of_hearts.svg" alt="J♥" />
+            <img src="Cards/queen_of_clubs.svg" alt="Q♣" />
+            <img src="Cards/king_of_diamonds.svg" alt="K♦" />
+            <img src="Cards/ace_of_spades.svg" alt="A♠" />
+          </div>
+          <p class="formula">(10+10+10+10+1) × 3</p>
+        </article>
+
+        <article class="combo-card">
+          <h3>투페어 (×2)</h3>
+          <div class="card-row">
+            <img src="Cards/8_of_spades.svg" alt="8♠" />
+            <img src="Cards/8_of_diamonds.svg" alt="8♦" />
+            <img src="Cards/4_of_hearts.svg" alt="4♥" />
+            <img src="Cards/4_of_clubs.svg" alt="4♣" />
+            <img src="Cards/king_of_hearts.svg" alt="K♥" />
+          </div>
+          <p class="formula">(8+8+4+4) × 2</p>
+        </article>
+      </div>
     </div>
 
     <p><a href="index.html">← 게임으로 돌아가기</a></p>
