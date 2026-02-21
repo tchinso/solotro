@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>솔로 트로 카드 게임</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <h1>솔로 트로 카드 게임</h1>
+    <div class="header-actions">
+      <button id="new-game-btn">새 게임 시작</button>
+      <button id="reset-btn">초기화</button>
+      <a href="howto.html">도움말 보기</a>
+    </div>
+    <p id="phase-text"></p>
+  </header>
+
+  <main>
+    <section class="user-controls">
+      <h2>사용자 행동</h2>
+      <p id="selection-help">카드를 눌러 선택하세요.</p>
+      <div class="control-buttons">
+        <button id="confirm-discard-btn">버리고 새로 받기</button>
+        <button id="skip-discard-btn">버리기 건너뛰기</button>
+        <button id="confirm-hand-btn">핸드카드 확정(5장)</button>
+      </div>
+    </section>
+
+    <section id="players-container" class="players-container"></section>
+
+    <section class="log-area">
+      <h2>라운드 기록</h2>
+      <ul id="log-list"></ul>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
