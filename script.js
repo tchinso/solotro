@@ -381,7 +381,7 @@ function applyRoundPenalty() {
 
   const userScore = state.scores[3];
   const rank = state.scores.filter((score) => score > userScore).length + 1;
-  const penaltyByRank = { 1: 250, 2: 200, 3: 150, 4: 100 };
+  const penaltyByRank = { 1: 300, 2: 250, 3: 200, 4: 150 };
   const penalty = penaltyByRank[rank] || 0;
   if (!penalty) return;
 
