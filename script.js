@@ -367,11 +367,26 @@ function userConfirmHand() {
   const userEval = evaluateBestFive(userHand);
   finishOnePlayer(3, userHand, userEval);
 
+  applyRoundPenalty();
+
   state.round += 1;
   state.phase = "discard";
   state.selected[3] = [];
   state.logs.push(`라운드 ${state.round - 1}: 핸드카드 점수 계산 완료`);
   render();
+}
+
+function applyRoundPenalty() {
+  if (state.round % 4 !== 0) return;
+
+  const userScore = state.scores[3];
+  const rank = state.scores.filter((score) => score > userScore).length + 1;
+  const penaltyByRank = { 1: 250, 2: 200, 3: 150, 4: 100 };
+  const penalty = penaltyByRank[rank] || 0;
+  if (!penalty) return;
+
+  state.scores[3] -= penalty;
+  state.logs.push(`라운드 ${state.round}: 사용자 ${rank}위 패널티 -${penalty}점`);
 }
 
 function finishOnePlayer(idx, hand, result) {
