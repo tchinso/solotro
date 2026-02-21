@@ -1,0 +1,91 @@
+:root {
+  color-scheme: light;
+  font-family: "Pretendard", "Noto Sans KR", sans-serif;
+}
+
+body {
+  margin: 0;
+  background: #f4f6fb;
+  color: #111;
+}
+
+header {
+  padding: 16px;
+  background: #1d3557;
+  color: #fff;
+}
+
+.header-actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.header-actions button,
+.header-actions a,
+.control-buttons button {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 8px;
+  text-decoration: none;
+  cursor: pointer;
+  background: #457b9d;
+  color: white;
+}
+
+main {
+  padding: 16px;
+  display: grid;
+  gap: 16px;
+}
+
+.user-controls,
+.log-area,
+.player-panel {
+  background: #fff;
+  border-radius: 12px;
+  padding: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.players-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 12px;
+}
+
+.cards-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.card {
+  width: 54px;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  background: #eef3ff;
+  padding: 2px;
+}
+
+.card.selectable {
+  cursor: pointer;
+}
+
+.card.selected {
+  border-color: #ff7f11;
+  transform: translateY(-2px);
+}
+
+.muted {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+ul#log-list {
+  list-style: disc;
+  padding-left: 20px;
+  max-height: 260px;
+  overflow: auto;
+}
