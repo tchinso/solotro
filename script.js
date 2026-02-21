@@ -318,12 +318,6 @@ function userDiscard(skip) {
   if (state.phase !== "discard") return;
   if (!skip && state.selected[3].length > 2) return;
 
-  for (let i = 0; i < 3; i++) {
-    const toDiscardIdx = cpuDiscardDecision(state.hands[i], 1200);
-    const kept = state.hands[i].filter((_, idx) => !toDiscardIdx.includes(idx));
-    state.hands[i] = [...kept, ...drawCards(toDiscardIdx.length)];
-  }
-
   if (!skip) {
     const selectedIds = new Set(state.selected[3]);
     const kept = state.hands[3].filter((c) => !selectedIds.has(c.id));
@@ -332,7 +326,7 @@ function userDiscard(skip) {
 
   state.selected[3] = [];
   state.phase = "hand";
-  state.logs.push(`라운드 ${state.round}: 버리기 단계 완료`);
+  state.logs.push(`라운드 ${state.round}: 사용자 버리기 단계 완료 (CPU는 버리지 않음)`);
   render();
 }
 
